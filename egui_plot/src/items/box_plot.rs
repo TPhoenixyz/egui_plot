@@ -443,8 +443,8 @@ impl RectElement for BoxElem {
     }
 
     fn default_values_format(&self, transform: &PlotTransform) -> String {
-        let scale = transform.dvalue_dpos();
-        let scale = match self.orientation {
+        let scale: [f64; 2] = transform.dvalue_dpos();
+        let scale: f64 = match self.orientation {
             Orientation::Horizontal => scale[0],
             Orientation::Vertical => scale[1],
         };

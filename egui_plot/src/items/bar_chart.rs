@@ -52,7 +52,7 @@ impl BarChart {
 
     /// Set the default color. It is set on all elements that do not already
     /// have a specific color. This is the color that shows up in the
-    /// legend. It can be overridden at the bar level (see [[`Bar`]]).
+    /// legend. It can be overridden at the bar level (see [`Bar`]).
     /// Default is `Color32::TRANSPARENT` which means a color will be
     /// auto-assigned.
     #[inline]
@@ -234,10 +234,10 @@ impl PlotItem for BarChart {
 /// charts. Width can be changed to allow variable-width histograms.
 #[derive(Clone, Debug, PartialEq)]
 pub struct Bar {
-    /// Name of plot element in the diagram (annotated by default formatter)
+    /// Name of plot element in the diagram (annotated by default formatter).
     pub name: String,
 
-    /// Which direction the bar faces in the diagram
+    /// Which direction the bar faces in the diagram.
     pub orientation: Orientation,
 
     /// Position on the argument (input) axis -- X if vertical, Y if horizontal
@@ -411,8 +411,8 @@ impl RectElement for Bar {
     }
 
     fn default_values_format(&self, transform: &PlotTransform) -> String {
-        let scale = transform.dvalue_dpos();
-        let scale = match self.orientation {
+        let scale: [f64; 2] = transform.dvalue_dpos();
+        let scale: f64 = match self.orientation {
             Orientation::Horizontal => scale[0],
             Orientation::Vertical => scale[1],
         };
